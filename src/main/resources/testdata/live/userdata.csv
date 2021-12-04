@@ -1,0 +1,6 @@
+Role,Board,Class Name,Role Type,Subscription,Mobile,Username,Password
+Parent,CBSE,12,Single,None,Yes,ajay.jain,123456
+Student,CBSE,12,Single,Prime,Yes,class_10,123456
+Admin,CBSE,11,Single,None,Yes,vinay2.admin,123456
+Admin,CBSE,11,Single,None,Yes,vinay2.student,1234567
+Admin,CBSE,11,Single,None,Yes,vinay3.student,123456
