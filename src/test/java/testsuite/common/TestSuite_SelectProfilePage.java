@@ -138,4 +138,30 @@ public class TestSuite_SelectProfilePage extends BaseTestClass {
 
 
     }
+    
+    @Test(groups = {TestGroup.SMOKE, TestGroup.SANITY},
+            description = "Verify User should be able to click on on 'Sign In' button)")
+    public void TC_013() {
+        ActionHelper.clearCookies();
+        ActionHelper.openURL(Constants.Urls.URL_HOMEPAGE);
+        SelectProfilePage selectProfilePage=new SelectProfilePage();
+        selectProfilePage.click_Sign_In_Btn();
+        CustomAssert.assertTrue(selectProfilePage.validate_google_lnk(),"Sign in button is not clickable");
+  }
+  
+  
+  @Test(groups = {TestGroup.SMOKE, TestGroup.SANITY},
+            description = "User should be able see Sign In Screen with Google and Microsoft sign In option as per the designs)")
+    public void TC_014() {
+        ActionHelper.clearCookies();
+        ActionHelper.openURL(Constants.Urls.URL_HOMEPAGE);
+        SelectProfilePage selectProfilePage=new SelectProfilePage();
+        selectProfilePage.click_Sign_In_Btn();
+        selectProfilePage.validate_google_lnk();
+        CustomAssert.assertTrue(selectProfilePage.validate_google_lnk(),"Google link is not aailable for login");
+        CustomAssert.assertTrue(selectProfilePage.validate_microSoft_Lnk(),"User not redirecting at expected page after logout");
+  }
+    
+    
+    
 }

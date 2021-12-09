@@ -13,6 +13,7 @@ public class SelectProfilePage {
 
      private final Locator sign_Btn=Locator.builder().withWeb(By.xpath("//button[text()='Sign In']"));
     private final Locator google_Lnk=Locator.builder().withWeb(By.xpath("//span[text()='Sign in with Google']"));
+    private final Locator microSoft_Lnk=Locator.builder().withWeb(By.xpath("//span[text()='Sign in with Microsoft']"));
     private final Locator submit_btn=Locator.builder().withWeb(By.xpath(""));
     private final Locator email_Txt=Locator.builder().withWeb(By.xpath("//input[@id='identifierId']"));
     private final Locator next_btn=Locator.builder().withWeb(By.xpath("//span[text()='Next']"));
@@ -36,8 +37,12 @@ public SelectProfilePage(){
 
     }
     
+    
     public boolean validate_google_lnk() {
     	return ActionHelper.IsEnableOrDisplay(google_Lnk);
+    }
+    public boolean validate_microSoft_Lnk() {
+    	return ActionHelper.IsEnableOrDisplay(microSoft_Lnk);
     }
     public void click_Sign_In_Btn(){
         ActionHelper.click(sign_Btn);

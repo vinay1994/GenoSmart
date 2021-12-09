@@ -292,6 +292,56 @@ public class TestSuite_HomePage extends BaseTestClass {
 	        CustomAssert.assertTrue(homePage.isClickable_contactUs_hamburg(),"Cantact Us is not clickable");
 	  }
 	  
+	  
+	  @Test(groups = {TestGroup.SMOKE, TestGroup.SANITY},
+	            description = "Verify user is able to see the logout option on clicking on Username coming at top right corner of screen")
+	    public void TC_028() {
+	        ActionHelper.clearCookies();
+	        ActionHelper.openURL(Constants.Urls.URL_HOMEPAGE);
+	        HomePage homePage= HomePage.getInstance();
+	        SelectProfilePage selectProfilePage=new SelectProfilePage();
+	        selectProfilePage.click_Sign_In_Btn();
+	        selectProfilePage.click_google_Lnk();
+	        selectProfilePage.login_email();
+	        homePage.click_UserName();
+	        CustomAssert.assertTrue(homePage.validate_logout_Btn(),"logout button is not available");
+	  }  
+	  
+	  @Test(groups = {TestGroup.SMOKE, TestGroup.SANITY},
+	            description = "Verify user is able to see sign In button instead of UserName on clicking on logout text on tooltip")
+	    public void TC_029() {
+	        ActionHelper.clearCookies();
+	        ActionHelper.openURL(Constants.Urls.URL_HOMEPAGE);
+	        HomePage homePage= HomePage.getInstance();
+	        SelectProfilePage selectProfilePage=new SelectProfilePage();
+	        selectProfilePage.click_Sign_In_Btn();
+	        selectProfilePage.click_google_Lnk();
+	        selectProfilePage.login_email();
+	        homePage.click_UserName();
+	        homePage.click_logout();
+	        CustomAssert.assertTrue(homePage.validate_SignIn_Btn(),"sign in button is not available");
+	  }
+	  
+	  @Test(groups = {TestGroup.SMOKE, TestGroup.SANITY},
+	            description = "Verify on 'Logout', User is able to navigate back to Home screen(without Sign In)")
+	    public void TC_030() {
+	        ActionHelper.clearCookies();
+	        ActionHelper.openURL(Constants.Urls.URL_HOMEPAGE);
+	        HomePage homePage= HomePage.getInstance();
+	        SelectProfilePage selectProfilePage=new SelectProfilePage();
+	        selectProfilePage.click_Sign_In_Btn();
+	        selectProfilePage.click_google_Lnk();
+	        selectProfilePage.login_email();
+	        homePage.click_UserName();
+	        homePage.click_logout();
+	        CustomAssert.assertTrue(homePage.validate_SignIn_Btn(),"User not redirecting at expected page after logout");
+	  }
+	  
+	
+	  
+	  
+	  
+	  
     @Test(groups = {TestGroup.SMOKE, TestGroup.SANITY},
             description = "To Validate sign in button present at homepage")
     public void TC_001_Validate_Sign_In_ButtonPresent() {

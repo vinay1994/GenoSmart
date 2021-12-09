@@ -52,6 +52,8 @@ public class HomePage {
     private final Locator wiki_hamburg=Locator.builder().withWeb(By.xpath("//span[text()='Wiki']"));
     private final Locator contactUs=Locator.builder().withWeb(By.xpath("//span[text()='Contact Us']"));
     
+    private final Locator logout_btn=Locator.builder().withWeb(By.xpath("//span[text()='Logout']"));
+    
     
     
     
@@ -274,6 +276,16 @@ public class HomePage {
 	    return false;
   }
    
-   
-   
+   public boolean validate_logout_Btn() {
+	   return ActionHelper.isEnabled(logout_btn);
+   }
+   public boolean validate_SignIn_Btn() {
+	   return ActionHelper.isEnabled(sign_Btn);
+   }
+   public void click_logout() {
+	   ActionHelper.click(logout_btn);
+   }
+   public void click_UserName() {
+	   ActionHelper.click(Email_Name);
+   }
 }
