@@ -21,7 +21,7 @@ public class HomePage {
 	
 
     private static  HomePage _instance =null;
-    private final Locator Sign_In_Btn = Locator.builder().withWeb(By.xpath("//button[text()='Sign In']"));
+ 
     private  final Locator need_Help_Btn=Locator.builder().withWeb(By.xpath("//span[@class='ms-1 m-auto']"));
      private final Locator about_us_Btn=Locator.builder().withWeb(By.xpath("//span[text()='About Us']")) ; 
      private final Locator org_Lnk=Locator.builder().withWeb(By.xpath("//a[text()='(arlg.org)']"));
@@ -37,6 +37,21 @@ public class HomePage {
     private final Locator publication_account=Locator.builder().withWeb(By.xpath("//h4[text()='Account']"));
     private final Locator pipeline_about=Locator.builder().withWeb(By.xpath("//h2[text()='About']"));
     private final Locator wiki_home=Locator.builder().withWeb(By.xpath("//h1[text()='Home']"));
+    private  final Locator MySubmissions=Locator.builder().withWeb(By.xpath("//span[text()='My Submissions']"));
+    private final Locator complete_reprot_btn=Locator.builder().withWeb(By.xpath("//span[text()='Completed Reports']"));
+    private final Locator sign_Btn=Locator.builder().withWeb(By.xpath("//button[text()='Sign In']"));
+    private final Locator Email_Name=Locator.builder().withWeb(By.xpath("//span/span"));
+    private final Locator newsBlog=Locator.builder().withWeb(By.xpath("//strong[text()='NEWS & BLOG']"));
+    private final Locator content_NewsBlog=Locator.builder().withWeb(By.xpath("//div[@class='col-12 col-md-4 d-flex']/div/ul/li"));
+    private final Locator publications_btn=Locator.builder().withWeb(By.xpath("//span[text()='Publications']"));
+    private final Locator twitter=Locator.builder().withWeb(By.xpath("//span[text()='Twitter']"));
+    
+    private final Locator home_lnk=Locator.builder().withWeb(By.xpath("//span[text()='Home']"));
+    private final Locator author=Locator.builder().withWeb(By.xpath("//th[text()='Authors']"));
+    private final Locator newsAndBlogs_hamburg=Locator.builder().withWeb(By.xpath("//span[text()='News & Blogs']"));
+    private final Locator wiki_hamburg=Locator.builder().withWeb(By.xpath("//span[text()='Wiki']"));
+    private final Locator contactUs=Locator.builder().withWeb(By.xpath("//span[text()='Contact Us']"));
+    
     
     
     
@@ -51,7 +66,7 @@ public class HomePage {
     }
 
     public boolean sign_In_IsPresent(){
-       return  ActionHelper.isPresent(Sign_In_Btn);
+       return  ActionHelper.isPresent(sign_Btn);
     }
     public boolean need_Help_IsPresent(){
         return  ActionHelper.isPresent(need_Help_Btn);
@@ -70,6 +85,14 @@ public class HomePage {
 	   return false;
    }
    
+   public  boolean validate_Publications_Url() {
+	   actual= ActionHelper.getText(publications_btn);
+	  String currentUrl =DriverManager.getDriver().getCurrentUrl();
+	  if(currentUrl.contains(actual.toLowerCase()))
+	  return true;
+	  
+	   return false;
+   }
    public  boolean validate_Org_Url() {
 	   return ActionHelper.validate_currentUrl(ActionHelper.getCommonString(actual),arg_home);
 	   }
@@ -118,7 +141,6 @@ public class HomePage {
 	    return ActionHelper.validate_currentUrl(ActionHelper.getCommonString(actual),pipeline_about);
 	   }
     
-    
     public void click_wiki_lnk() {
     	ActionHelper.scrollTo_Element(wiki_lnk);
     	actual=ActionHelper.getText(wiki_lnk);
@@ -148,6 +170,110 @@ public class HomePage {
     
 
     
+  public String getMysubscription_Text() {
+	 return ActionHelper.getText(MySubmissions);
+  }
   
-    
+  public Boolean validate_MySubscription_Btn() {
+	  actual=getMysubscription_Text();
+	  if(actual.equalsIgnoreCase(actual))
+	  return true;
+	  return false;
+			  
+  }
+  
+  public String getCompleteReport_Text() {
+	 return ActionHelper.getText(complete_reprot_btn);
+  }
+  
+  public Boolean validate_CompleteReport_Btn() {
+	  actual=getMysubscription_Text();
+	  if(actual.equalsIgnoreCase(actual))
+	  return true;
+	  return false;
+			  
+  }
+  
+  public Boolean validate_Sign_Btn_visibility() {
+	  if(ActionHelper.isPresent(sign_Btn))
+	  return false;
+	  return true;
+  }
+  
+  
+   public Boolean validate_EmailUser_Name() {
+	   
+	   if(ActionHelper.getText(Email_Name).equals(Constants.emailUserName))
+		  return true; 
+	    return false;
+	   
+	   
+   }
+  
+   
+   public boolean isPresent_publications_btn() {
+		  return ActionHelper.isPresent(publications_btn);
+				  }
+	   public void click_Publicatios() {
+		   ActionHelper.click(publications_btn);
+	   }
+	   
+	   
+	   
+	   
+   public boolean isPresent_Upload_lnk() {
+	  return ActionHelper.isPresent(UploadFilePage.getInstance().upload_File_Btn);
+   }
+   public boolean IsPresent_Home_lnk() {
+	  return  ActionHelper.isPresent(home_lnk);
+   }
+   
+   public  boolean validate_newsblockSection() {
+	  return  ActionHelper.IsEnableOrDisplay(newsBlog);
+   }
+   
+   public Boolean valide_ContentInnewsblock() {
+	   try {
+	   if(ActionHelper.findElements(content_NewsBlog).size()>0)
+		   return true;
+	   }
+	   catch(Exception e) {
+		   
+	   }
+	   
+	   return false;
+   }
+   
+   
+   public boolean isClickable_contactUs_hamburg() {
+	   return ActionHelper.isEnabled(contactUs);
+   }
+   public boolean isPresent_ContactUs() {
+	   return ActionHelper.isPresent(contactUs);
+   }
+   public boolean isPresent_Twitter() {
+	   return ActionHelper.isPresent(twitter);
+   }
+   public boolean isPresent_wiki_hamburg() {
+	   return ActionHelper.isPresent(wiki_hamburg);
+   }
+   public boolean isClickable_wiki_hamburg() {
+	    if(!ActionHelper.isEnabled(wiki_hamburg))
+	    	return true;
+	    return false;
+  }
+   
+   public boolean isClickable_Twitter() {
+	    if(!ActionHelper.isEnabled(twitter))
+	    	return true;
+	    return false;
+   }
+   public boolean isClickable_NewsAndBlogs() {
+	    if(!ActionHelper.isEnabled(newsAndBlogs_hamburg))
+	    	return true;
+	    return false;
+  }
+   
+   
+   
 }

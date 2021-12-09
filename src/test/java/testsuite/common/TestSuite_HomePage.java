@@ -7,6 +7,8 @@ import constants.Constants;
 import constants.TestGroup;
 import org.testng.annotations.Test;
 import pageobjects.HomePage;
+import pageobjects.SelectProfilePage;
+import pageobjects.UploadFilePage;
 
 public class TestSuite_HomePage extends BaseTestClass {
 
@@ -98,38 +100,197 @@ public class TestSuite_HomePage extends BaseTestClass {
 	        CustomAssert.assertTrue(homePage.validate_wiki_Url(),"by clicking on superscript reference no. 1 Link user not it will navigate to reference no. 1 in the footer section");
 	    }
 	  
+	  @Test(groups = {TestGroup.SMOKE, TestGroup.SANITY},
+	            description = "Verify User should be able to see additional options as 'My Submissions' in Hamburger menu after Signing In")
+	    public void TC_010() {
+	        ActionHelper.clearCookies();
+	        ActionHelper.openURL(Constants.Urls.URL_HOMEPAGE);
+	        HomePage homePage= HomePage.getInstance();
+	        SelectProfilePage selectProfilePage=new SelectProfilePage();
+	        selectProfilePage.click_Sign_In_Btn();
+	        selectProfilePage.click_google_Lnk();
+	        selectProfilePage.login_email();
+	        CustomAssert.assertTrue(homePage.validate_MySubscription_Btn(),"My Submissions button is not available");
+	    }
+	  
+	  
+	  @Test(groups = {TestGroup.SMOKE, TestGroup.SANITY},
+	            description = "Verify User should be able to see additional options as  'Completed Reports' in Hamburger menu after Signing In")
+	    public void TC_011() {
+	        ActionHelper.clearCookies();
+	        ActionHelper.openURL(Constants.Urls.URL_HOMEPAGE);
+	        HomePage homePage= HomePage.getInstance();
+	        SelectProfilePage selectProfilePage=new SelectProfilePage();
+	        selectProfilePage.click_Sign_In_Btn();
+	        selectProfilePage.click_google_Lnk();
+	        selectProfilePage.login_email();
+	        CustomAssert.assertTrue(homePage.validate_CompleteReport_Btn(),"Completed Reports button is not available");
+	    }
 	  
 	  
 	  
 	  
+	  @Test(groups = {TestGroup.SMOKE, TestGroup.SANITY},
+	            description = "Verify 'Sign In' button should be removed from the top right side corner of the screen when user gets Signed In")
+	    public void TC_012() {
+	        ActionHelper.clearCookies();
+	        ActionHelper.openURL(Constants.Urls.URL_HOMEPAGE);
+	        HomePage homePage= HomePage.getInstance();
+	        SelectProfilePage selectProfilePage=new SelectProfilePage();
+	        selectProfilePage.click_Sign_In_Btn();
+	        selectProfilePage.click_google_Lnk();
+	        selectProfilePage.login_email();
+	        CustomAssert.assertTrue(homePage.validate_Sign_Btn_visibility(),"sign in  button is present  ");
+	    }  
+	  
+	  
+	  
+	  @Test(groups = {TestGroup.SMOKE, TestGroup.SANITY},
+	            description = "Use name should be in capital letter")
+	    public void TC_013() {
+	        ActionHelper.clearCookies();
+	        ActionHelper.openURL(Constants.Urls.URL_HOMEPAGE);
+	        HomePage homePage= HomePage.getInstance();
+	        SelectProfilePage selectProfilePage=new SelectProfilePage();
+	        selectProfilePage.click_Sign_In_Btn();
+	        selectProfilePage.click_google_Lnk();
+	        selectProfilePage.login_email();
+	        CustomAssert.assertTrue(homePage.validate_EmailUser_Name(),"User name is not in Capital letter  ");
+	    }
+	  
+	  @Test(groups = {TestGroup.SMOKE, TestGroup.SANITY},
+	            description = "Verify User should be able to see \"NEWS & BLOGS\" section as per the attached image")
+	    public void TC_014() {
+	        ActionHelper.clearCookies();
+	        ActionHelper.openURL(Constants.Urls.URL_HOMEPAGE);
+	        HomePage homePage= HomePage.getInstance();
+	        CustomAssert.assertTrue(homePage.validate_newsblockSection(),"News & Blogs section is not aailable");
+	    }
+	  
+	  @Test(groups = {TestGroup.SMOKE, TestGroup.SANITY},
+	            description = "Verify User should be able to see content in \"NEWS & BLOGS\" section in bullet points")
+	    public void TC_015() {
+	        ActionHelper.clearCookies();
+	        ActionHelper.openURL(Constants.Urls.URL_HOMEPAGE);
+	        HomePage homePage= HomePage.getInstance();
+	        CustomAssert.assertTrue(homePage.valide_ContentInnewsblock(),"Content in News & Blogs section is not available");
+	    }
+	  
+	  @Test(groups = {TestGroup.SMOKE, TestGroup.SANITY},
+	            description = "Verify User should be able to see Home option as preselected in Hamburger menu")
+	    public void TC_016() {
+	        ActionHelper.clearCookies();
+	        ActionHelper.openURL(Constants.Urls.URL_HOMEPAGE);
+	        HomePage homePage= HomePage.getInstance();
+	        CustomAssert.assertTrue(homePage.IsPresent_Home_lnk(),"Home link is not present in hamburger menu");
+	    } 
 	  
 	  
 	  
 	  
+	  @Test(groups = {TestGroup.SMOKE, TestGroup.SANITY},
+	            description = "Verify User should be able to see Upload files option in Hamburger menu and look and feel should be as per designs")
+	    public void TC_017() {
+	        ActionHelper.clearCookies();
+	        ActionHelper.openURL(Constants.Urls.URL_HOMEPAGE);
+	        HomePage homePage= HomePage.getInstance();
+	        CustomAssert.assertTrue(homePage.isPresent_Upload_lnk(),"Upload file link is not present in hamburger menu");
+	  }
+	  
+	  @Test(groups = {TestGroup.SMOKE, TestGroup.SANITY},
+	            description = "Verify user should be able to navigate to signIn screen on selecting Upload Files")
+	    public void TC_018() {
+	        ActionHelper.clearCookies();
+	        ActionHelper.openURL(Constants.Urls.URL_HOMEPAGE);
+	        UploadFilePage.getInstance().click_Upload_file_Btn();
+	        CustomAssert.assertTrue(SelectProfilePage.getInstance().validate_google_lnk(),"User is not able to nevigate to sign screen");
+	  }
+	  
+	  @Test(groups = {TestGroup.SMOKE, TestGroup.SANITY},
+	            description = "Verify User should be able to see Publications in Hamburger menu and look and feel should be as per designs")
+	    public void TC_019() {
+	        ActionHelper.clearCookies();
+	        ActionHelper.openURL(Constants.Urls.URL_HOMEPAGE);
+	        HomePage homePage= HomePage.getInstance();
+	        CustomAssert.assertTrue(homePage.isPresent_publications_btn(),"Publications button is not visible");
+	  }
+	  
+	  @Test(groups = {TestGroup.SMOKE, TestGroup.SANITY},
+	            description = "Verify user should be able to navigate to Publications screen on selecting Publications")
+	    public void TC_020() {
+	        ActionHelper.clearCookies();
+	        ActionHelper.openURL(Constants.Urls.URL_HOMEPAGE);
+	        HomePage homePage= HomePage.getInstance();
+	        homePage.click_Publicatios();
+	        CustomAssert.assertTrue(homePage.validate_Publications_Url(),"Publications button is not clickable");
+	  }
+	  
+	  @Test(groups = {TestGroup.SMOKE, TestGroup.SANITY},
+	            description = "Verify User should be able to see Twitter in Hamburger menu and look and feel should be as per designs")
+	    public void TC_021() {
+	        ActionHelper.clearCookies();
+	        ActionHelper.openURL(Constants.Urls.URL_HOMEPAGE);
+	        HomePage homePage= HomePage.getInstance();
+	        CustomAssert.assertTrue(homePage.isPresent_Twitter(),"Twitter button is not present");
+	  }
 	  
 	  
+	  @Test(groups = {TestGroup.SMOKE, TestGroup.SANITY},
+	            description = "Verify that Twitter is non clickable")
+	    public void TC_022() {
+	        ActionHelper.clearCookies();
+	        ActionHelper.openURL(Constants.Urls.URL_HOMEPAGE);
+	        HomePage homePage= HomePage.getInstance();
+	        CustomAssert.assertTrue(homePage.isClickable_Twitter(),"Twitter is clickable");
+	  }
 	  
 	  
+	  @Test(groups = {TestGroup.SMOKE, TestGroup.SANITY},
+	            description = "Verify that New and Blogs is non clickable")
+	    public void TC_023() {
+	        ActionHelper.clearCookies();
+	        ActionHelper.openURL(Constants.Urls.URL_HOMEPAGE);
+	        HomePage homePage= HomePage.getInstance();
+	        CustomAssert.assertTrue(homePage.isClickable_NewsAndBlogs(),"New and blogs is clickable");
+	  }
 	  
 	  
+	  @Test(groups = {TestGroup.SMOKE, TestGroup.SANITY},
+	            description = "Verify User should be able to see Wiki in Hamburger menu and look and feel should be as per designs")
+	    public void TC_024() {
+	        ActionHelper.clearCookies();
+	        ActionHelper.openURL(Constants.Urls.URL_HOMEPAGE);
+	        HomePage homePage= HomePage.getInstance();
+	        CustomAssert.assertTrue(homePage.isPresent_wiki_hamburg(),"wiki is not present in hamburger");
+	  }
 	  
 	  
+	  @Test(groups = {TestGroup.SMOKE, TestGroup.SANITY},
+	            description = "Verify that Wiki option is non clickable")
+	    public void TC_025() {
+	        ActionHelper.clearCookies();
+	        ActionHelper.openURL(Constants.Urls.URL_HOMEPAGE);
+	        HomePage homePage= HomePage.getInstance();
+	        CustomAssert.assertTrue(homePage.isClickable_wiki_hamburg()," Wiki option is  clickable");
+	  }
 	  
+	  @Test(groups = {TestGroup.SMOKE, TestGroup.SANITY},
+	            description = "Verify User should be able to see Contact Us in Hamburger menu and look and feel should be as per designs")
+	    public void TC_026() {
+	        ActionHelper.clearCookies();
+	        ActionHelper.openURL(Constants.Urls.URL_HOMEPAGE);
+	        HomePage homePage= HomePage.getInstance();
+	        CustomAssert.assertTrue(homePage.isPresent_ContactUs(),"Cantact Us is not visible");
+	  }
 	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
+	  @Test(groups = {TestGroup.SMOKE, TestGroup.SANITY},
+	            description = "Verify that Contact Us option is non clickable")
+	    public void TC_027() {
+	        ActionHelper.clearCookies();
+	        ActionHelper.openURL(Constants.Urls.URL_HOMEPAGE);
+	        HomePage homePage= HomePage.getInstance();
+	        CustomAssert.assertTrue(homePage.isClickable_contactUs_hamburg(),"Cantact Us is not clickable");
+	  }
 	  
     @Test(groups = {TestGroup.SMOKE, TestGroup.SANITY},
             description = "To Validate sign in button present at homepage")
@@ -141,7 +302,7 @@ public class TestSuite_HomePage extends BaseTestClass {
     }
 
     @Test(groups = {TestGroup.SMOKE, TestGroup.SANITY},
-            description = "To Validate sign in button present at homepage")
+            description = "To Validate need help button present at homepage")
     public void TC_002_Validate_Sing_In_ButtonPresent() {
         ActionHelper.clearCookies();
         ActionHelper.openURL(Constants.Urls.URL_HOMEPAGE);

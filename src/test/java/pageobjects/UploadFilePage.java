@@ -8,7 +8,7 @@ import utils.Locator;
 public class UploadFilePage {
 
    private static UploadFilePage _instance=null;
-    private  final Locator upload_File_Btn=Locator.builder().withWeb(By.xpath("//span[text()='Upload Files']"));
+    public  final Locator upload_File_Btn=Locator.builder().withWeb(By.xpath("//span[text()='Upload Files']"));
     private  final  Locator browser_xml_Btn=Locator.builder().withWeb(By.xpath("(//button[text()='Browse'])[1]"));
     private  final  Locator browser_fasta_Btn=Locator.builder().withWeb(By.xpath("(//button[text()='Browse'])[2]"));
     private  final Locator sign_In_Btn=Locator.builder().withWeb(By.xpath(""));

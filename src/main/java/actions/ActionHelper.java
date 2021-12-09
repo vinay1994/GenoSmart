@@ -156,6 +156,12 @@ public class ActionHelper {
         return waitUntilAllElementsVisible(by);
     }
 
+    
+    public static List<WebElement> findElements(Locator locator){
+    	
+    	return DriverManager.getDriver().findElements(locator.getBy()); 
+    	
+    }
     public static void fill(Locator locator, String input) {
         if (input.length() < 1)
             return;
@@ -220,6 +226,10 @@ public class ActionHelper {
         return flag;
     }
 
+    
+    public static boolean isEnabled(Locator locator) {
+    	return DriverManager.getDriver().findElement(locator.getBy()).isEnabled();
+    }
 
     public static boolean isPresent(Locator locator) {
         boolean flag = false;

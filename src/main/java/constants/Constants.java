@@ -8,7 +8,9 @@ public  class Constants {
     public static final String FILENAME_TESTNG_XML = "testng.xml";
     public static final String TESTNG_XML_SUITE_NAME = "GenoSmart";
     public static final String TESTNG_XML_TEST_NAME = " GenoSmart Automation Suite";
-
+    public static final String email="Email";
+    public static final String email_Password="Email_Password";
+    public static final String emailUserName="Email_User_Name";
 
     public static final class Timeouts {
         public static final int ELEMENT_TIMEOUT = 30;
