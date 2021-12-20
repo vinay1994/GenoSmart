@@ -54,8 +54,7 @@ public class HomePage {
     
     private final Locator logout_btn=Locator.builder().withWeb(By.xpath("//span[text()='Logout']"));
     
-    
-    
+    private final Locator backTohome=Locator.builder().withWeb(By.xpath("//a[@class='back-to-home']"));
     
     private HomePage() {
 
@@ -76,6 +75,7 @@ public class HomePage {
    public void click_About_Us() {
 	   actual=ActionHelper.getText(about_us_Btn);
 	 ActionHelper.click(about_us_Btn);
+	 
  }
  
    public  boolean validate_AboutUs_Url() {
@@ -100,7 +100,9 @@ public class HomePage {
 	   }
     public void click_Org_Lnk() {
     actual=ActionHelper.getText(org_Lnk);
+   
     ActionHelper.click(org_Lnk);
+ 
     }
     public void click_GenoSmart_lnk() {
     	actual=ActionHelper.getText(genoSmart_lnk);
@@ -253,6 +255,11 @@ public class HomePage {
    public boolean isPresent_ContactUs() {
 	   return ActionHelper.isPresent(contactUs);
    }
+   
+   public void click_contactUs() {
+	  ActionHelper.click(contactUs);   }
+   
+   
    public boolean isPresent_Twitter() {
 	   return ActionHelper.isPresent(twitter);
    }
@@ -260,20 +267,40 @@ public class HomePage {
 	   return ActionHelper.isPresent(wiki_hamburg);
    }
    public boolean isClickable_wiki_hamburg() {
-	    if(!ActionHelper.isEnabled(wiki_hamburg))
+	   try {
+		   ActionHelper.click(wiki_hamburg);
+	   	    if(ActionHelper.isPresent(backTohome))
 	    	return true;
+	   }
+	   catch(Exception e) {
+		   return true;
+	   }
 	    return false;
   }
    
+
    public boolean isClickable_Twitter() {
-	    if(!ActionHelper.isEnabled(twitter))
+	   try {
+		   ActionHelper.click(twitter);
+	   	    if(ActionHelper.isPresent(backTohome))
 	    	return true;
+	   }
+	   catch(Exception e) {
+		   return true;
+	   }
 	    return false;
    }
    public boolean isClickable_NewsAndBlogs() {
-	    if(!ActionHelper.isEnabled(newsAndBlogs_hamburg))
-	    	return true;
-	    return false;
+	    try {
+			   ActionHelper.click(newsAndBlogs_hamburg);
+		   	    if(ActionHelper.isPresent(backTohome))
+		    	return true;
+		   }
+		   catch(Exception e) {
+			   return true;
+		   }
+		    return false;
+	    
   }
    
    public boolean validate_logout_Btn() {

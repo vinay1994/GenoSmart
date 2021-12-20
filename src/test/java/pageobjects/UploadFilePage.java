@@ -11,7 +11,7 @@ public class UploadFilePage {
     public  final Locator upload_File_Btn=Locator.builder().withWeb(By.xpath("//span[text()='Upload Files']"));
     private  final  Locator browser_xml_Btn=Locator.builder().withWeb(By.xpath("(//button[text()='Browse'])[1]"));
     private  final  Locator browser_fasta_Btn=Locator.builder().withWeb(By.xpath("(//button[text()='Browse'])[2]"));
-    private  final Locator sign_In_Btn=Locator.builder().withWeb(By.xpath(""));
+    private  final Locator sign_In_Btn=Locator.builder().withWeb(By.xpath("//span[text()='Sign in with Google']"));
     private UploadFilePage() {
 
     }

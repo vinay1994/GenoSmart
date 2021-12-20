@@ -7,6 +7,8 @@ import constants.Constants;
 import constants.TestGroup;
 import org.testng.annotations.Test;
 import org.testng.annotations.TestInstance;
+
+import pageobjects.SelectProfilePage;
 import pageobjects.UploadFilePage;
 
 public class TestSuite_UploadFilePage extends BaseTestClass {
@@ -18,11 +20,15 @@ public class TestSuite_UploadFilePage extends BaseTestClass {
     public void TC_001_Validate_Upload_File_Functionality() {
         ActionHelper.clearCookies();
         ActionHelper.openURL(Constants.Urls.URL_HOMEPAGE);
+        SelectProfilePage selectProfilePage=new SelectProfilePage();
+        selectProfilePage.click_Sign_In_Btn();
+        selectProfilePage.click_google_Lnk();
+        selectProfilePage.login_email();
         UploadFilePage uploadFilePage=UploadFilePage.getInstance();
         uploadFilePage.click_Upload_file_Btn();
-       // uploadFilePage.upload_xmlFile();
-      //  uploadFilePage.upload_FastaFile();
-      //  CustomAssert.assertTrue("");
+        uploadFilePage.upload_xmlFile();
+        uploadFilePage.upload_FastaFile();
+     //   CustomAssert.assertTrue("");
 
     }
 
@@ -32,6 +38,10 @@ public class TestSuite_UploadFilePage extends BaseTestClass {
     public void TC_002_Validate_Upload_File_Btn() {
         ActionHelper.clearCookies();
         ActionHelper.openURL(Constants.Urls.URL_HOMEPAGE);
+        SelectProfilePage selectProfilePage=new SelectProfilePage();
+        selectProfilePage.click_Sign_In_Btn();
+        selectProfilePage.click_google_Lnk();
+        selectProfilePage.login_email();
         UploadFilePage uploadFilePage=UploadFilePage.getInstance();
         uploadFilePage.click_Upload_file_Btn();
         CustomAssert.assertTrue(uploadFilePage.check_sign_In_Btn(),"either upload button is not clickable or Sign in button is not present");

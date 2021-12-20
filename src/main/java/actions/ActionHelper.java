@@ -67,6 +67,16 @@ public class ActionHelper {
         }
         waitForLoaderToHide();
     }
+    
+    public static void highLightElement(Locator locator) {
+    	By element = locator.getBy();
+    	  JavascriptExecutor js = (JavascriptExecutor) DriverManager.getDriver();
+    	  js.executeScript("arguments[0].setAttribute('style','background: yellow; border: 2px solid red;');", element);
+    	  js.executeScript("arguments[0].style.border=''", element, "");
+    	}
+    
+    
+    
     public static void click(WebElement webElement) {
         try {
         	webElement.click();
