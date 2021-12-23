@@ -12,6 +12,8 @@ public class UploadFilePage {
     private  final  Locator browser_xml_Btn=Locator.builder().withWeb(By.xpath("(//button[text()='Browse'])[1]"));
     private  final  Locator browser_fasta_Btn=Locator.builder().withWeb(By.xpath("(//button[text()='Browse'])[2]"));
     private  final Locator sign_In_Btn=Locator.builder().withWeb(By.xpath("//span[text()='Sign in with Google']"));
+    private final Locator uplaod_lnk=Locator.builder().withWeb(By.xpath("//span[text()='Upload']"));
+    private final Locator success_Sms=Locator.builder().withWeb(By.xpath("//strong[text()='File uploaded Successfully!']"));
     private UploadFilePage() {
 
     }
@@ -26,13 +28,21 @@ public class UploadFilePage {
     public  void click_Upload_file_Btn(){
         ActionHelper.click(upload_File_Btn);
     }
+    
+    public  void click_Upload_Lnk(){
+    	ActionHelper.scrollTo_Element(uplaod_lnk);
+        ActionHelper.click(uplaod_lnk);
+    }
     public void upload_xmlFile(){
-        ActionHelper.click(browser_xml_Btn);
-     ActionHelper.uploadFile_RobotClass(Constants.FILEPATH_XML_FILE);
+       ActionHelper.click(browser_xml_Btn);
+     //  ActionHelper.uploadFile(browser_xml_Btn, "E:\\GenoSmart\\Automation\\genoSmart\\src\\main\\resources\\testdata\\files\\SampleTest.xml");
+     ActionHelper.uploadFile_RobotClass("E:\\GenoSmart\\Automation\\genoSmart\\src\\main\\resources\\testdata\\files\\SampleTest");
     }
     public void upload_FastaFile(){
         ActionHelper.click(browser_fasta_Btn);
-        ActionHelper.uploadFile_RobotClass(Constants.FILEPATH_FASTA_FILE);
+     //   ActionHelper.uploadFile(browser_xml_Btn, "E:\\GenoSmart\\Automation\\genoSmart\\src\\main\\resources\\testdata\\files\\SampleTest.fasta");
+        ActionHelper.uploadFile_RobotClass("E:\\GenoSmart\\Automation\\genoSmart\\src\\main\\resources\\testdata\\files\\SampleTest.fasta");
+       // System.out.println(Constants.FILEPATH_FASTA_FILE);
     }
 
 
@@ -43,4 +53,19 @@ public class UploadFilePage {
             return true;
         return false;
 }
+     
+     public Boolean check_success_Sms(){
+         String sms=null;
+         sms=ActionHelper.getText(success_Sms);
+         if(sms!=null)
+             return true;
+         return false;
+ }
+     
+     
+     
+     
+     
+     
+     
 }

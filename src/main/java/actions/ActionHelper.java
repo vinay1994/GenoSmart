@@ -435,6 +435,9 @@ public class ActionHelper {
                   robot.keyPress(KeyEvent.VK_V);
                   robot.keyRelease(KeyEvent.VK_V);
                   robot.keyRelease(KeyEvent.VK_CONTROL);
+                 
+              //    robot.keyPress(KeyEvent.VK_A);
+                //  robot.keyRelease(KeyEvent.VK_A);
                   robot.keyPress(KeyEvent.VK_ENTER);
                   robot.keyRelease(KeyEvent.VK_ENTER);
               } catch (Exception exp) {

@@ -45,7 +45,7 @@ public class HomePage {
     private final Locator content_NewsBlog=Locator.builder().withWeb(By.xpath("//div[@class='col-12 col-md-4 d-flex']/div/ul/li"));
     private final Locator publications_btn=Locator.builder().withWeb(By.xpath("//span[text()='Publications']"));
     private final Locator twitter=Locator.builder().withWeb(By.xpath("//span[text()='Twitter']"));
-    
+    public  final Locator upload_File_Btn=Locator.builder().withWeb(By.xpath("//span[text()='Upload Files']"));
     private final Locator home_lnk=Locator.builder().withWeb(By.xpath("//span[text()='Home']"));
     private final Locator author=Locator.builder().withWeb(By.xpath("//th[text()='Authors']"));
     private final Locator newsAndBlogs_hamburg=Locator.builder().withWeb(By.xpath("//span[text()='News & Blogs']"));
@@ -55,6 +55,16 @@ public class HomePage {
     private final Locator logout_btn=Locator.builder().withWeb(By.xpath("//span[text()='Logout']"));
     
     private final Locator backTohome=Locator.builder().withWeb(By.xpath("//a[@class='back-to-home']"));
+    private final Locator home_img=Locator.builder().withWeb(By.xpath("//img[@class='cursor-pointer ']"));
+    private final Locator home_active_btn=Locator.builder().withWeb(By.xpath("//a[@class='float-left nav-link active']"));
+    private final Locator upload_actie_btn=Locator.builder().withWeb(By.xpath("(//a[@class='float-left nav-link'])[1]"));
+    private final Locator publication_active=Locator.builder().withWeb(By.xpath("(//a[@class='float-left nav-link'])[2]"));
+    private final Locator my_Subscription_btn=Locator.builder().withWeb(By.xpath("//span[text()='My Submissions']"));
+    
+    private final Locator about_active_btn=Locator.builder().withWeb(By.xpath("(//a[@class='float-left nav-link'])[3]"));
+    
+    
+    
     
     private HomePage() {
 
@@ -66,6 +76,70 @@ public class HomePage {
         return _instance;
     }
 
+    
+    public void click_home_img() {
+    	ActionHelper.click(home_img);
+    }
+    
+    
+    public boolean isVisible_Home() {
+    	String text=null;
+    	ActionHelper.performMouseHover(home_active_btn);
+    	text=ActionHelper.getText(home_lnk);
+    	if(text!=null)
+    		return true;
+    	return false;
+    }
+    public boolean isVisible_uploadFile() {
+    	String text=null;
+    	ActionHelper.performMouseHover(upload_actie_btn);
+    	text=ActionHelper.getText(upload_File_Btn);
+    	if(text!=null)
+    		return true;
+    	return false;
+    }
+    
+    
+    public boolean isVisible_publication() {
+    	String text=null;
+    	ActionHelper.performMouseHover(publication_active);
+    	text=ActionHelper.getText(publications_btn);
+    	if(text!=null)
+    		return true;
+    	return false;
+    }
+    
+    public boolean isVisible_mySubmission() {
+    	String text=null;
+    	ActionHelper.performMouseHover(publication_active);
+    	text=ActionHelper.getText(my_Subscription_btn);
+    	if(text!=null)
+    		return true;
+    	return false;
+    }
+    
+    
+    public boolean isVisible_about_us() {
+    	String text=null;
+    	ActionHelper.performMouseHover(about_active_btn);
+    	text=ActionHelper.getText(about_us_Btn);
+    	if(text!=null)
+    		return true;
+    	return false;
+    }
+    
+    public boolean isVisible_completed_Report() {
+    	String text=null;
+    	ActionHelper.performMouseHover(about_active_btn);
+    	text=ActionHelper.getText(complete_reprot_btn);
+    	if(text!=null)
+    		return true;
+    	return false;
+    }
+    
+    
+    
+    
     public boolean sign_In_IsPresent(){
        return  ActionHelper.isPresent(sign_Btn);
     }

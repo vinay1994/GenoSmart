@@ -17,7 +17,7 @@ public class TestSuite_HomePage extends BaseTestClass {
 	  
     @Test(groups = {TestGroup.SMOKE, TestGroup.SANITY},
             description = "To Validate sign in button present at homepage")
-    public void TC_001_Validate_Sign_In_ButtonPresent() {
+    public void TC_001() {
         ActionHelper.clearCookies();
         ActionHelper.openURL(Constants.Urls.URL_HOMEPAGE);
         HomePage homePage= HomePage.getInstance();
@@ -26,7 +26,7 @@ public class TestSuite_HomePage extends BaseTestClass {
 
     @Test(groups = {TestGroup.SMOKE, TestGroup.SANITY},
             description = "To Validate need help button present at homepage")
-    public void TC_002_Validate_Sing_In_ButtonPresent() {
+    public void TC_002() {
         ActionHelper.clearCookies();
         ActionHelper.openURL(Constants.Urls.URL_HOMEPAGE);
         HomePage homePage= HomePage.getInstance();
@@ -36,11 +36,11 @@ public class TestSuite_HomePage extends BaseTestClass {
 	  
 	  @Test(groups = {TestGroup.SMOKE, TestGroup.SANITY},
 	            description = "Verify User should be able to see additional options as 'My Submissions' in Hamburger menu after Signing In")
-	    public void TC_003() {
+	    public static void TC_003() {
 	        ActionHelper.clearCookies();
 	        ActionHelper.openURL(Constants.Urls.URL_HOMEPAGE);
 	        HomePage homePage= HomePage.getInstance();
-	        SelectProfilePage selectProfilePage=new SelectProfilePage();
+	        SelectProfilePage selectProfilePage=SelectProfilePage.getInstance();
 	        selectProfilePage.click_Sign_In_Btn();
 	        selectProfilePage.click_google_Lnk();
 	        selectProfilePage.login_email();
@@ -48,47 +48,44 @@ public class TestSuite_HomePage extends BaseTestClass {
 	    }
 	  
 	  
-	  @Test(groups = {TestGroup.SMOKE, TestGroup.SANITY},
+	  @Test(dependsOnGroups="Login",groups = {TestGroup.SMOKE, TestGroup.SANITY},
 	            description = "Verify User should be able to see additional options as  'Completed Reports' in Hamburger menu after Signing In")
 	    public void TC_004() {
 	        ActionHelper.clearCookies();
 	        ActionHelper.openURL(Constants.Urls.URL_HOMEPAGE);
 	        HomePage homePage= HomePage.getInstance();
-	        SelectProfilePage selectProfilePage=new SelectProfilePage();
+	        SelectProfilePage selectProfilePage=SelectProfilePage.getInstance();
 	        selectProfilePage.click_Sign_In_Btn();
 	        selectProfilePage.click_google_Lnk();
-	        selectProfilePage.login_email();
 	        CustomAssert.assertTrue(homePage.validate_CompleteReport_Btn(),"Completed Reports button is not available");
 	    }
 	  
 	  
 	  
 	  
-	  @Test(groups = {TestGroup.SMOKE, TestGroup.SANITY},
+	  @Test(dependsOnGroups="Login",groups = {TestGroup.SMOKE, TestGroup.SANITY},
 	            description = "Verify 'Sign In' button should be removed from the top right side corner of the screen when user gets Signed In")
 	    public void TC_005() {
 	        ActionHelper.clearCookies();
 	        ActionHelper.openURL(Constants.Urls.URL_HOMEPAGE);
 	        HomePage homePage= HomePage.getInstance();
-	        SelectProfilePage selectProfilePage=new SelectProfilePage();
+	        SelectProfilePage selectProfilePage=SelectProfilePage.getInstance();
 	        selectProfilePage.click_Sign_In_Btn();
 	        selectProfilePage.click_google_Lnk();
-	        selectProfilePage.login_email();
 	        CustomAssert.assertTrue(homePage.validate_Sign_Btn_visibility(),"sign in  button is present  ");
 	    }  
 	  
 	  
 	  
-	  @Test(groups = {TestGroup.SMOKE, TestGroup.SANITY},
+	  @Test(dependsOnGroups="Login",groups = {TestGroup.SMOKE, TestGroup.SANITY},
 	            description = "Use name should be in capital letter")
 	    public void TC_006() {
 	        ActionHelper.clearCookies();
 	        ActionHelper.openURL(Constants.Urls.URL_HOMEPAGE);
 	        HomePage homePage= HomePage.getInstance();
-	        SelectProfilePage selectProfilePage=new SelectProfilePage();
+	        SelectProfilePage selectProfilePage=SelectProfilePage.getInstance();
 	        selectProfilePage.click_Sign_In_Btn();
 	        selectProfilePage.click_google_Lnk();
-	        selectProfilePage.login_email();
 	        CustomAssert.assertTrue(homePage.validate_EmailUser_Name(),"User name is not in Capital letter  ");
 	    }
 	  
@@ -220,45 +217,42 @@ public class TestSuite_HomePage extends BaseTestClass {
 	  }
 	  
 	  
-	  @Test(groups = {TestGroup.SMOKE, TestGroup.SANITY},
+	  @Test(dependsOnGroups="Login",groups = {TestGroup.SMOKE, TestGroup.SANITY},
 	            description = "Verify user is able to see the logout option on clicking on Username coming at top right corner of screen")
 	    public void TC_020() {
 	        ActionHelper.clearCookies();
 	        ActionHelper.openURL(Constants.Urls.URL_HOMEPAGE);
 	        HomePage homePage= HomePage.getInstance();
-	        SelectProfilePage selectProfilePage=new SelectProfilePage();
+	        SelectProfilePage selectProfilePage=SelectProfilePage.getInstance();
 	        selectProfilePage.click_Sign_In_Btn();
 	        selectProfilePage.click_google_Lnk();
-	        selectProfilePage.login_email();
 	        homePage.click_UserName();
 	        CustomAssert.assertTrue(homePage.validate_logout_Btn(),"logout button is not available");
 	  }  
 	  
-	  @Test(groups = {TestGroup.SMOKE, TestGroup.SANITY},
+	  @Test(dependsOnGroups="Login",groups = {TestGroup.SMOKE, TestGroup.SANITY},
 	            description = "Verify user is able to see sign In button instead of UserName on clicking on logout text on tooltip")
 	    public void TC_021() {
 	        ActionHelper.clearCookies();
 	        ActionHelper.openURL(Constants.Urls.URL_HOMEPAGE);
 	        HomePage homePage= HomePage.getInstance();
-	        SelectProfilePage selectProfilePage=new SelectProfilePage();
+	        SelectProfilePage selectProfilePage=SelectProfilePage.getInstance();
 	        selectProfilePage.click_Sign_In_Btn();
 	        selectProfilePage.click_google_Lnk();
-	        selectProfilePage.login_email();
 	        homePage.click_UserName();
 	        homePage.click_logout();
 	        CustomAssert.assertTrue(homePage.validate_SignIn_Btn(),"sign in button is not available");
 	  }
 	  
-	  @Test(groups = {TestGroup.SMOKE, TestGroup.SANITY},
+	  @Test(dependsOnGroups="Login",groups = {TestGroup.SMOKE, TestGroup.SANITY},
 	            description = "Verify on 'Logout', User is able to navigate back to Home screen(without Sign In)")
 	    public void TC_022() {
 	        ActionHelper.clearCookies();
 	        ActionHelper.openURL(Constants.Urls.URL_HOMEPAGE);
 	        HomePage homePage= HomePage.getInstance();
-	        SelectProfilePage selectProfilePage=new SelectProfilePage();
+	        SelectProfilePage selectProfilePage=SelectProfilePage.getInstance();
 	        selectProfilePage.click_Sign_In_Btn();
 	        selectProfilePage.click_google_Lnk();
-	        selectProfilePage.login_email();
 	        homePage.click_UserName();
 	        homePage.click_logout();
 	        CustomAssert.assertTrue(homePage.validate_SignIn_Btn(),"User not redirecting at expected page after logout");
@@ -283,7 +277,73 @@ public class TestSuite_HomePage extends BaseTestClass {
 	        CustomAssert.assertTrue(homePage.isPresent_publications_btn(),"Publications button is not visible");
 	  }
 	  
-	
-    
-    
+	  @Test(groups = {TestGroup.SMOKE, TestGroup.SANITY},
+	            description = "Verify User should be able to see Home option when mouse hover on hamburger icons on collapsed hamburger menu")
+	    public void TC_025() {
+	        ActionHelper.clearCookies();
+	        ActionHelper.openURL(Constants.Urls.URL_HOMEPAGE);
+	        HomePage homePage= HomePage.getInstance();
+	        homePage.click_home_img();
+	        CustomAssert.assertTrue(homePage.isVisible_Home(),"home button is not visible");
+	  }
+	  
+	  
+	  @Test(groups = {TestGroup.SMOKE, TestGroup.SANITY},
+	            description = "Verify User should be able to see Upload Files option when mouse hover on hamburger icons on collapsed hamburger menu")
+	    public void TC_026() {
+	        ActionHelper.clearCookies();
+	        ActionHelper.openURL(Constants.Urls.URL_HOMEPAGE);
+	        HomePage homePage= HomePage.getInstance();
+	        homePage.click_home_img();
+	        CustomAssert.assertTrue(homePage.isVisible_uploadFile(),"upload file button is not visible");
+	  }
+	  
+	  @Test(dependsOnGroups="Login",groups = {TestGroup.SMOKE, TestGroup.SANITY},
+	            description = "Verify User should be able to see My Submissions option when mouse hover on hamburger icons on collapsed hamburger menu")
+	    public void TC_027() {
+	        ActionHelper.clearCookies();
+	        ActionHelper.openURL(Constants.Urls.URL_HOMEPAGE);
+	        HomePage homePage= HomePage.getInstance();
+	        SelectProfilePage selectProfilePage=SelectProfilePage.getInstance();
+	        selectProfilePage.click_Sign_In_Btn();
+	        selectProfilePage.click_google_Lnk();
+	        homePage.click_home_img();
+	        CustomAssert.assertTrue(homePage.isVisible_mySubmission()," My Submissions button is not visible");
+	  }
+	  @Test(groups = {TestGroup.SMOKE, TestGroup.SANITY},
+	            description = "Verify User should be able to see Publications option when mouse hover on hamburger icons on collapsed hamburger menu")
+	    public void TC_028() {
+	        ActionHelper.clearCookies();
+	        ActionHelper.openURL(Constants.Urls.URL_HOMEPAGE);
+	        HomePage homePage= HomePage.getInstance();
+	        homePage.click_home_img();
+	        CustomAssert.assertTrue(homePage.isVisible_publication()," Publications button is not visible");
+	  }
+	  
+	  @Test(groups = {TestGroup.SMOKE, TestGroup.SANITY},
+	            description = "Verify User should be able to see About us option when mouse hover on hamburger icons on collapsed hamburger menu")
+	    public void TC_029() {
+	        ActionHelper.clearCookies();
+	        ActionHelper.openURL(Constants.Urls.URL_HOMEPAGE);
+	        HomePage homePage= HomePage.getInstance();
+	        homePage.click_home_img();
+	        CustomAssert.assertTrue(homePage.isVisible_about_us()," about us button is not visible");
+	  }
+	  
+	  
+	  
+	  @Test(dependsOnGroups="Login",groups = {TestGroup.SMOKE, TestGroup.SANITY},
+	            description = "Verify User should be able to see Completed Reports option when mouse hover on hamburger icons on collapsed hamburger menu")
+	    public void TC_030() {
+	        ActionHelper.clearCookies();
+	        ActionHelper.openURL(Constants.Urls.URL_HOMEPAGE);
+	        HomePage homePage= HomePage.getInstance();
+	        SelectProfilePage selectProfilePage=SelectProfilePage.getInstance();
+	        selectProfilePage.click_Sign_In_Btn();
+	        selectProfilePage.click_google_Lnk();
+	        homePage.click_home_img();
+	        CustomAssert.assertTrue(homePage.isVisible_completed_Report(),"Completed Report button is not visible");
+	  }
+	  
+	  
 }

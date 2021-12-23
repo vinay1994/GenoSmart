@@ -30,8 +30,8 @@ public  class Constants {
         public static final String FILEPATH_DOC_FILE = PATH_CURRENT_WORKING_DIRECTORY + "/" + TEST_DATA_FOLDER_PATH + GlobalData.ENVIRONMENT.toLowerCase()+ "/files/file.doc";
         public static final String FILEPATH_PNG_FILE = PATH_CURRENT_WORKING_DIRECTORY + "/" + TEST_DATA_FOLDER_PATH + GlobalData.ENVIRONMENT.toLowerCase()+ "/files/file.png";
         public static final String FILEPATH_JPG_FILE = PATH_CURRENT_WORKING_DIRECTORY + "/" + TEST_DATA_FOLDER_PATH + GlobalData.ENVIRONMENT.toLowerCase()+ "/files/file.jpg";
-        public static final String FILEPATH_XML_FILE = PATH_CURRENT_WORKING_DIRECTORY + "/" + TEST_DATA_FOLDER_PATH + GlobalData.ENVIRONMENT.toLowerCase()+ "/files/file.xml";
-        public static final String FILEPATH_FASTA_FILE = PATH_CURRENT_WORKING_DIRECTORY + "/" + TEST_DATA_FOLDER_PATH + GlobalData.ENVIRONMENT.toLowerCase()+ "/files/file.fasta";
+        public static final String FILEPATH_XML_FILE = PATH_CURRENT_WORKING_DIRECTORY + "/" + TEST_DATA_FOLDER_PATH +"/files/SampleTest.xml";
+        public static final String FILEPATH_FASTA_FILE = PATH_CURRENT_WORKING_DIRECTORY + "/" + TEST_DATA_FOLDER_PATH +"/files/SampleTest.fasta";
         public static final String FILEPATH_COMMON_TEXT = PATH_CURRENT_WORKING_DIRECTORY + "/" + TEST_DATA_FOLDER_PATH + "commonText.csv";
     }
 

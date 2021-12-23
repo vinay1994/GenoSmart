@@ -11,6 +11,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
 import java.time.Duration;
@@ -35,10 +37,16 @@ public class GenericFunctions {
         if (GlobalData.DRIVER_TYPE.equalsIgnoreCase("chrome")) {
             WebDriverManager.chromedriver().setup();
             ChromeOptions options = new ChromeOptions();
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+           
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("profile.default_content_setting_values.notifications", 1);
             options.setExperimentalOption("prefs", jsonObject);
-            driver = new ChromeDriver(options);
+             capabilities.setCapability (CapabilityType.ACCEPT_SSL_CERTS, true);
+             capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+        	 capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+        	 options.merge(capabilities);
+        	 driver = new ChromeDriver(options);
         } else if (GlobalData.DRIVER_TYPE.equalsIgnoreCase("firefox")) {
             WebDriverManager.firefoxdriver().setup();
             driver = new FirefoxDriver();
