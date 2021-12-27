@@ -34,7 +34,7 @@ public class TestSuite_HomePage extends BaseTestClass {
     }
     
 	  
-	  @Test(groups = {TestGroup.SMOKE, TestGroup.SANITY},
+	  @Test(dependsOnGroups="Login",groups = {TestGroup.SMOKE, TestGroup.SANITY},
 	            description = "Verify User should be able to see additional options as 'My Submissions' in Hamburger menu after Signing In")
 	    public static void TC_003() {
 	        ActionHelper.clearCookies();
@@ -57,6 +57,7 @@ public class TestSuite_HomePage extends BaseTestClass {
 	        SelectProfilePage selectProfilePage=SelectProfilePage.getInstance();
 	        selectProfilePage.click_Sign_In_Btn();
 	        selectProfilePage.click_google_Lnk();
+	        selectProfilePage.login_email();
 	        CustomAssert.assertTrue(homePage.validate_CompleteReport_Btn(),"Completed Reports button is not available");
 	    }
 	  
@@ -72,13 +73,14 @@ public class TestSuite_HomePage extends BaseTestClass {
 	        SelectProfilePage selectProfilePage=SelectProfilePage.getInstance();
 	        selectProfilePage.click_Sign_In_Btn();
 	        selectProfilePage.click_google_Lnk();
+	        selectProfilePage.login_email();
 	        CustomAssert.assertTrue(homePage.validate_Sign_Btn_visibility(),"sign in  button is present  ");
 	    }  
 	  
 	  
 	  
 	  @Test(dependsOnGroups="Login",groups = {TestGroup.SMOKE, TestGroup.SANITY},
-	            description = "Use name should be in capital letter")
+	            description = "User name should be in capital letter")
 	    public void TC_006() {
 	        ActionHelper.clearCookies();
 	        ActionHelper.openURL(Constants.Urls.URL_HOMEPAGE);
@@ -86,6 +88,7 @@ public class TestSuite_HomePage extends BaseTestClass {
 	        SelectProfilePage selectProfilePage=SelectProfilePage.getInstance();
 	        selectProfilePage.click_Sign_In_Btn();
 	        selectProfilePage.click_google_Lnk();
+	        selectProfilePage.login_email();
 	        CustomAssert.assertTrue(homePage.validate_EmailUser_Name(),"User name is not in Capital letter  ");
 	    }
 	  
@@ -208,7 +211,7 @@ public class TestSuite_HomePage extends BaseTestClass {
 	  }
 	  
 	  @Test(groups = {TestGroup.SMOKE, TestGroup.SANITY},
-	            description = "Verify that Contact Us option is non clickable")
+	            description = "Verify that Contact Us option is non clickable",enabled = false)
 	    public void TC_019() {
 	        ActionHelper.clearCookies();
 	        ActionHelper.openURL(Constants.Urls.URL_HOMEPAGE);
@@ -226,6 +229,7 @@ public class TestSuite_HomePage extends BaseTestClass {
 	        SelectProfilePage selectProfilePage=SelectProfilePage.getInstance();
 	        selectProfilePage.click_Sign_In_Btn();
 	        selectProfilePage.click_google_Lnk();
+	        selectProfilePage.login_email();
 	        homePage.click_UserName();
 	        CustomAssert.assertTrue(homePage.validate_logout_Btn(),"logout button is not available");
 	  }  
@@ -239,6 +243,7 @@ public class TestSuite_HomePage extends BaseTestClass {
 	        SelectProfilePage selectProfilePage=SelectProfilePage.getInstance();
 	        selectProfilePage.click_Sign_In_Btn();
 	        selectProfilePage.click_google_Lnk();
+	        selectProfilePage.login_email();
 	        homePage.click_UserName();
 	        homePage.click_logout();
 	        CustomAssert.assertTrue(homePage.validate_SignIn_Btn(),"sign in button is not available");
@@ -253,12 +258,13 @@ public class TestSuite_HomePage extends BaseTestClass {
 	        SelectProfilePage selectProfilePage=SelectProfilePage.getInstance();
 	        selectProfilePage.click_Sign_In_Btn();
 	        selectProfilePage.click_google_Lnk();
+	        selectProfilePage.login_email();
 	        homePage.click_UserName();
 	        homePage.click_logout();
 	        CustomAssert.assertTrue(homePage.validate_SignIn_Btn(),"User not redirecting at expected page after logout");
 	  }
 	  
-	  @Test(groups = {TestGroup.SMOKE, TestGroup.SANITY},
+	  @Test(groups = {TestGroup.SMOKE, TestGroup.SANITY},enabled = false,
 	            description = "Verify user should be able navigate to compose email screen email To: arlg_geno-smart@mc.duke.edu screen in their email browser")
 	    public void TC_023() {
 	        ActionHelper.clearCookies();
@@ -307,6 +313,7 @@ public class TestSuite_HomePage extends BaseTestClass {
 	        SelectProfilePage selectProfilePage=SelectProfilePage.getInstance();
 	        selectProfilePage.click_Sign_In_Btn();
 	        selectProfilePage.click_google_Lnk();
+	        selectProfilePage.login_email();
 	        homePage.click_home_img();
 	        CustomAssert.assertTrue(homePage.isVisible_mySubmission()," My Submissions button is not visible");
 	  }
@@ -341,6 +348,7 @@ public class TestSuite_HomePage extends BaseTestClass {
 	        SelectProfilePage selectProfilePage=SelectProfilePage.getInstance();
 	        selectProfilePage.click_Sign_In_Btn();
 	        selectProfilePage.click_google_Lnk();
+	        selectProfilePage.login_email();
 	        homePage.click_home_img();
 	        CustomAssert.assertTrue(homePage.isVisible_completed_Report(),"Completed Report button is not visible");
 	  }

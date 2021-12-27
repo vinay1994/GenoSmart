@@ -22,6 +22,12 @@ public class CustomAssert {
         Logger.logPass(str);
     }
 
+	public static void assertFalse(boolean condition, String message) {
+		Assert.assertFalse(condition, message);
+        Logger.logPass(message + " = <b>Pass</b>");
+		
+	}
+
 
 }
 

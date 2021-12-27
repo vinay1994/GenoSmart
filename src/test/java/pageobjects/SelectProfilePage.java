@@ -50,11 +50,16 @@ public SelectProfilePage(){
     }
     
     public void login_email() {
+    	try {
     	ActionHelper.waitUntilAllElementsVisible(email_Txt);
     	ActionHelper.fill(email_Txt, ActionHelper.getCommonString(Constants.email));
     	ActionHelper.click(next_btn);
     	ActionHelper.fill(password_Txt, ActionHelper.getCommonString(Constants.email_Password));
     	ActionHelper.click(next_btn);
+    	}
+    	catch(Exception e) {
+    		
+    	}
     	
     }
 }

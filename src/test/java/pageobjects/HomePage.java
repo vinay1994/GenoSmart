@@ -16,7 +16,7 @@ import utils.Locator;
 public class HomePage {
 	
 	
-	static String actual=null;
+	 String actual=null;
 	
 	
 
@@ -37,7 +37,7 @@ public class HomePage {
     private final Locator publication_account=Locator.builder().withWeb(By.xpath("//h4[text()='Account']"));
     private final Locator pipeline_about=Locator.builder().withWeb(By.xpath("//h2[text()='About']"));
     private final Locator wiki_home=Locator.builder().withWeb(By.xpath("//h1[text()='Home']"));
-    private  final Locator MySubmissions=Locator.builder().withWeb(By.xpath("//span[text()='My Submissions']"));
+    public static final Locator MySubmissions=Locator.builder().withWeb(By.xpath("//span[text()='My Submissions']"));
     private final Locator complete_reprot_btn=Locator.builder().withWeb(By.xpath("//span[text()='Completed Reports']"));
     private final Locator sign_Btn=Locator.builder().withWeb(By.xpath("//button[text()='Sign In']"));
     private final Locator Email_Name=Locator.builder().withWeb(By.xpath("//span/span"));
@@ -154,6 +154,7 @@ public class HomePage {
  
    public  boolean validate_AboutUs_Url() {
 	   actual=ActionHelper.getCommonString(actual);
+	   ActionHelper.waitUntilAllElementsVisible(ARLG_lnk);
 	  String currentUrl =DriverManager.getDriver().getCurrentUrl();
 	  if(currentUrl.contains(actual))
 	  return true;
@@ -162,8 +163,9 @@ public class HomePage {
    }
    
    public  boolean validate_Publications_Url() {
-	   actual= ActionHelper.getText(publications_btn);
+	   ActionHelper.waitUntilElementClickable(author);
 	  String currentUrl =DriverManager.getDriver().getCurrentUrl();
+	  System.out.println(actual+":"+currentUrl);
 	  if(currentUrl.contains(actual.toLowerCase()))
 	  return true;
 	  
@@ -281,7 +283,7 @@ public class HomePage {
   
    public Boolean validate_EmailUser_Name() {
 	   
-	   if(ActionHelper.getText(Email_Name).equals(Constants.emailUserName))
+	   if(ActionHelper.getText(Email_Name).equals(ActionHelper.getCommonString(Constants.emailUserName)))
 		  return true; 
 	    return false;
 	   
@@ -293,6 +295,7 @@ public class HomePage {
 		  return ActionHelper.isPresent(publications_btn);
 				  }
 	   public void click_Publicatios() {
+		   actual= ActionHelper.getText(publications_btn);
 		   ActionHelper.click(publications_btn);
 	   }
 	   
